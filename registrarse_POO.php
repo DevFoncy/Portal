@@ -13,28 +13,7 @@
 
 						 		 <?php
 
-						 		 	$conexion = mysqli_connect("localhost","root","","portal");
-						 		 	if( !$conexion){
-						 		 		echo "no se pudo conetar a mysql <br>";
-						 		 		echo mysqli_connect_errno(); //numero de error 
-						 		 		echo mysqli_connect_error();  
-						 		 	}
-
-						 		 	$resultado = mysqli_query($conexion,"SELECT * from usuario");
-
-						 		   while($fila = mysqli_fetch_array($resultado)){//mostrar los resultados de cada fila
-						 		 			$nombre_php= $fila ['nombre'];
-						 		 			$usuario_php=$fila ['usuario'];
-						 		 			$apellido_php= $fila['apellido'];
-						 		 			$cargo_php= $fila['cargo'];	
-						 		 			$codigo_php= $fila['codigo'];
-						 		 			$fecha_inicio_php= $fila['fecha_inicio'];
-						 		 			$contra_php= $fila['contra'];
-						 		 	echo "$nombre_php $apellido_php <br>";
-						 		 	
-									}
-									mysqli_free_result($conexion);
-						 		 	mysqli_close();
+						 	
 						 		 ?>
 
 						 		 	<form action="" enctype="multipart/form-data" method="POST" role="form">
