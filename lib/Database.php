@@ -1,4 +1,4 @@
-<? php
+<?php
     
  class Database{
  	public $db;
@@ -9,7 +9,7 @@
     
  	function __construct ( $dbhost, $dbuser, $dbpass, $dbname){
         
- 		$this->db= new mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
+ 		$this->db= new mysqli($dbhost, $dbuser, $dbpass, $dbname);
         
  		if($this->db->connect_errno ){
             trigger_error("Falto la conexion con MySQL,Tipo de Error -> ({$this->db->connect_error})", E_USER_ERROR);
@@ -20,9 +20,11 @@
         
  	}
     
-    public function getClientes(){
+    public function getUsuarios(){
         $this->resultado = $this->db->query("SELECT * from usuario");
-        return $this->resultado ->fetch_assoc();
+        return $this->resultado ->fetch_all(); //devuelve un array de todos los registross
  }
 }
 
+
+?>

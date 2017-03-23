@@ -13,10 +13,44 @@
 
 						 		 <?php
 
-						 	
-						 		 ?>
+						 		 require 'lib/conexion.php';
+						 		 require 'lib/Database.php';
+						 		 $conex= new Database(DB_HOST,DB_USER,DB_PASS,DB_NAME);
 
-						 		 	<form action="" enctype="multipart/form-data" method="POST" role="form">
+						 		 $array = $conex->getUsuarios();
+						 		 //var_dump($array);
+						 		 echo "<table class='table table-cell'
+						 		 		<thead>
+						 		 			<tr>
+						 		 					<td> id_USUARIO </td>
+						 		 					<td> USUARIO </td>
+						 		 					<td> Contraseña </td>
+						 		 					<td> Nombre </td>
+						 		 					<td> apellido</td>
+						 		 					<td> Codigo </td>
+						 		 					<td> Cargo </td>
+						 		 					<td> Fecha_Inicio </td>
+						 		 			</tr>
+						 		 		 <tbody>
+						 		 	  ";
+
+						 		  foreach ($array as $value) {
+						 		  				echo "<tr>";
+						 		  	foreach ($value as $value2) {
+						 		  				echo "<td> $value2 </td>";
+						 		  	}
+						 		  				echo "</tr>";
+						 		  	
+						  	# code...
+						 		  }
+						 		  	echo "</tbody";
+						 		  	echo "</table>";
+						 			
+
+						 		 ?>
+						 
+
+						 		 	<!-- <form action="" enctype="multipart/form-data" method="POST" role="form">
 						 		     <legend>Registrate</legend>
 						 		 	
 						 		    	<div class="form-group">
@@ -55,8 +89,8 @@
 
 
 						 		 		<button type="submit" class="btn btn-primary">Registrar</button>
-						 		 		<a class="pull-right" href="index.php">Clic aqui si ya tienes una cuenta</a>
-						 		 	</form>
+						 		 		<a class="pull-right" href="index.phep">Clic aqui si ya tienes una cuenta</a>
+						 		 	</form> -->
 						    			
 						  		</div>
 						</div>
