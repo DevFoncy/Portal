@@ -7,7 +7,7 @@
 				    	 </div>
 				    </div>
 				    <div class="row">
-						<div class="col-md-6 col-md-offset-3">
+						<div class="col-md-12">
 							<div class="panel panel-default">
 						 		 <div class="panel-body">
 
@@ -17,12 +17,40 @@
 						 		 require 'lib/Database.php';
 						 		 $conex= new Database(DB_HOST,DB_USER,DB_PASS,DB_NAME);
 
-						 		 $array = $conex->getUsuarios();
-						 		 //var_dump($array);
-						 		 echo "<table class='table table-cell'
+						 		 $conex->preparar("SELECT nombre, apellido, cargo FROM usuario");
+						 		 $conex->ejecutar();
+						 		 $conex->prep()->bind_result($nombre_a,$apellido_b,$cargo_c);
+						 		 //bind_result recibe variables en el mismo orden de la consulta hecha con preparar
+
+						 		  echo "<table class='table table-cell'
 						 		 		<thead>
 						 		 			<tr>
-						 		 					<td> id_USUARIO </td>
+						 		 					<td> Nombre </td>
+						 		 					<td> apellido</td>
+						 		 					<td> Cargo </td>
+						 		 			</tr>
+						 		 		 <tbody>
+						 		 	  ";
+						 		 while($conex->resultado()){
+						 		 	echo "<tr>
+						 		 			<td>$nombre_a</td>
+						 		 			<td>$apellido_b</td>
+						 		 			<td>$cargo_c</td>
+						 		 		  </tr>";
+						 		 			
+						 		 }
+
+
+						 		 echo "</tbody>
+						 		      </table>";
+
+						 		  echo  $conex->validar_datos('usuario','usuario','Foncy');
+
+						 		 //var_dump($array);
+						 		 /*echo "<table class='table table-cell'
+						 		 		<thead>
+						 		 			<tr>
+						 		 					<td> ID </td>
 						 		 					<td> USUARIO </td>
 						 		 					<td> Contraseña </td>
 						 		 					<td> Nombre </td>
@@ -41,12 +69,12 @@
 						 		  	}
 						 		  				echo "</tr>";
 						 		  	
-						  	# code...
+						  	# c
 						 		  }
 						 		  	echo "</tbody";
 						 		  	echo "</table>";
 						 			
-
+*/
 						 		 ?>
 						 
 
