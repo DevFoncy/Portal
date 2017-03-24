@@ -20,7 +20,7 @@
 						 		 			<input type="password" class="form-control" id="" placeholder="Su contraseña es" required> 
 						 		 		</div>
 						 		 		<button type="submit" class="btn btn-primary">Ingresar</button>
-						 		 		<a class="pull-right" href="registrarse.php">Registrarse</a>
+						 		 		<a class="pull-right" href="registrarse_POO.php">Registrarse</a>
 						 		 	</form>
 						  		</div>
 						</div>

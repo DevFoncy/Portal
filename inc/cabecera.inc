@@ -1,3 +1,5 @@
+<?php require 'lib/validar_datos.php'; ?>
+
 <!DOCTYPE html>
 <html lang="es">
 	<head>

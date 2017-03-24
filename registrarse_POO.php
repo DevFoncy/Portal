@@ -7,13 +7,28 @@
 				    	 </div>
 				    </div>
 				    <div class="row">
-						<div class="col-md-12">
+						<div class="col-md-6 col-md-offset-3">
 							<div class="panel panel-default">
 						 		 <div class="panel-body">
 
 						 		 <?php
+						 		 	if($_POST){
+						 		 		//Convirtiendo el array en variables
+						 		 		extract($_POST, EXTR_OVERWRITE);
+						 		 		//para crear la carpeta fotos si no existe
+                                         if(!file_exists("fotos")){
+                                         	mkdir("fotos",0777);//0777 es un tipo de permiso
+                                         }
+                                         //convertir a minuscula
+                                         $nombre= strtolower($nombre); 
+                                         if( validar_datos($nombre)){
+                                         echo "<img class='img-responsive' src='$rutaSubida'>";
+                                         }
+	
+						 		 		//var_dump($foto);
+						 		 	}
 
-						 		 require 'lib/conexion.php';
+						 	/*	 require 'lib/conexion.php';
 						 		 require 'lib/Database.php';
 						 		 $conex= new Database(DB_HOST,DB_USER,DB_PASS,DB_NAME);
 
@@ -41,10 +56,13 @@
 						 		 }
 
 
-						 		 echo "</tbody>
+						 		  echo "</tbody>
 						 		      </table>";
 
-						 		  echo  $conex->validar_datos('usuario','usuario','Foncy');
+						 		  echo  $conex->validar_datos('usuario','usuario','Foncy');*/
+
+
+						 		   // esto para realizar una consulta en especifico  sobre una columna de una tabla
 
 						 		 //var_dump($array);
 						 		 /*echo "<table class='table table-cell'
@@ -78,7 +96,7 @@
 						 		 ?>
 						 
 
-						 		 	<!-- <form action="" enctype="multipart/form-data" method="POST" role="form">
+						 		 	<form action="" enctype="multipart/form-data" method="POST" role="form">
 						 		     <legend>Registrate</legend>
 						 		 	
 						 		    	<div class="form-group">
@@ -106,7 +124,7 @@
 						 		 		</div>
 						 		 		
 										<div class="form-group">
-										<input  contra type="password" class="form-control" id="" placeholder="Contraseña">
+										<input  contra type="password" class="form-control" id="" placeholder="Contraseña" required>
 						 		 		</div>
 
 						 		 		
@@ -117,8 +135,8 @@
 
 
 						 		 		<button type="submit" class="btn btn-primary">Registrar</button>
-						 		 		<a class="pull-right" href="index.phep">Clic aqui si ya tienes una cuenta</a>
-						 		 	</form> -->
+						 		 		<a class="pull-right" href="index.php">Clic aqui si ya tienes una cuenta</a>
+						 		 	</form> 
 						    			
 						  		</div>
 						</div>
