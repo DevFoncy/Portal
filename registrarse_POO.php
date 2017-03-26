@@ -6,7 +6,7 @@
 				    	 	<h1>Portal Web</h1>
 				    	 </div>
 				    </div>
-				    <div class="row">
+e				    <div class="row">
 						<div class="col-md-6 col-md-offset-3">
 							<div class="panel panel-default">
 						 		 <div class="panel-body">
@@ -21,11 +21,55 @@
                                          }
                                          //convertir a minuscula
                                          $nombre= strtolower($nombre); 
-                                         if( validar_datos($nombre)){
-                                         echo "<img class='img-responsive' src='$rutaSubida'>";
-                                         }
-	
-						 		 		//var_dump($foto);
+                                         /*if(validar_datos($nombre)){
+                                         	echo "<img class='img-responsive' src='$rutaSubida'>";
+                                         }*/
+
+                                    require 'lib/conexion.php';
+						 		    require 'lib/Database.php';
+
+                           			$conex= new Database(DB_HOST,DB_USER,DB_PASS,DB_NAME);
+                         			//si nombre no tendria un valor botaria false
+                         			if($nombre && $apellido &&	$cargo && $email  && $user && $password && $confirm_contra){
+                         					
+                         					$exp_regular='/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/';
+                         					if( preg_match($exp_regular,$email )){
+                         								if(strlen($password)>6){
+                         									if($password == $confirm_contra){
+                         										//te devuelve la cantidad de filas que cumplan con esto
+                         										$validar_email=$conex->validar_datos('correo','usuario',$email);
+                         											if($validar_email == 0){
+                         												if( validar_datos($nombre)){
+
+                         														if( $conex->preparar("INSERT INTO VALUES(NULL, '$user','$password','$nombre','$apellido','email',NULL,NULL,NULL)" )){
+
+                         														} 
+                                         								 				
+                                         								}
+                                         								else{
+                                         										echo $error;
+                                         									}
+                         											}
+                         											else {
+                         												 echo "ese email ya existe prueba con otro";
+                         											}
+                         									}
+                         									else{
+                         										echo "las contraseñas no son iguales";
+                         									}
+
+                         								}
+                         								else{
+                         									echo "la contraseña tiene que ser mayor a 6 caracteres";
+                         								}
+                         					   }
+
+                         					else{
+                         						echo "email no valido, por favor ingrese de nuevo";
+                         					}
+                         			 }
+
+
 						 		 	}
 
 						 	/*	 require 'lib/conexion.php';
@@ -94,7 +138,7 @@
 						 			
 */
 						 		 ?>
-						 
+						
 
 						 		 	<form action="" enctype="multipart/form-data" method="POST" role="form">
 						 		     <legend>Registrate</legend>
@@ -119,15 +163,22 @@
 						 		 			<input name = fecha_ingreso type="date" class="form-control" id="" placeholder="Fecha de Ingreso">
 						 		 		</div>
 
+						 		 		<div class="form-group">
+						 		 			<input name = email type="text" class="form-control" id="" placeholder="correo">
+						 		 		</div>
+
 										<div class="form-group">
 						 		 			<input name = user type="text" class="form-control" id="" placeholder="Usuario">
 						 		 		</div>
 						 		 		
 										<div class="form-group">
-										<input  contra type="password" class="form-control" id="" placeholder="Contraseña" required>
+										<input  name=password type="password" class="form-control" id="" placeholder="Contraseña" required>
 						 		 		</div>
 
-						 		 		
+						 		 		<div class="form-group">
+										<input  name=confirm_contra type="password" class="form-control" id="" placeholder="Confirmar Contraseña" required>
+						 		 		</div>
+
 						 		 		<div class="form-group">
 						 		 			<label for=""> Elija su foto aqui</label>
 						 		 			<input  name ="foto" type="file" class="form-control" id="">

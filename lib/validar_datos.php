@@ -3,6 +3,7 @@
 	function validar_datos($nombre){
 		global $dirsubida;
 		global $rutaSubida;
+		global $error;
 
 		$dirsubida= "fotos/$nombre/";
 
@@ -12,7 +13,7 @@
                                          }
 
 						 		 		$foto = $_FILES['foto']; // array con toda la info
-
+						 		 		// var_dump($foto) // para depurar la informacion de foto
 						 		 		$nombrefoto= $foto['name'];
 						 		 		$nombreTmp = $foto['tmp_name'];
 						 		 		$rutaSubida = "{$dirsubida}profile.jpg";
@@ -25,15 +26,15 @@
 						 		 				
 						 		 			} 
 						 		 			else{
-						 		 				return false;
+													$error= "no se pudo mover el archivo";
 						 		 			}
-
 						 		 		}
 						 		 		else{
-						 		 			trigger_error("no es un archivo de imagen valido",E_USER_WARNING);
+						 		 			//trigger_error("no es un archivo de imagen valido",E_USER_WARNING);
+						 		 			$error= " no es un archivo de imagen valida";
 						 		 		}
-
+		
+		return $error;
 		}
-
 
 ?>
