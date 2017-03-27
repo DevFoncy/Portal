@@ -9,7 +9,7 @@
 
                                          //para crear la carpeta foto/nombre
                                          if(!file_exists($dirsubida)){
-                                         	mkdir($dirsubida,0777);
+                                         	mkdir($dirsubida,0777 );
                                          }
 
 						 		 		$foto = $_FILES['foto']; // array con toda la info
@@ -19,7 +19,7 @@
 						 		 		$rutaSubida = "{$dirsubida}profile.jpg";
 						 		 		//para obtener la extension de la imagen
 						 		 		$extArchivo= preg_replace('/image\//','', $foto['type']);
-						 		 		if($extArchivo == 'jpeg'|| $extArchivo == 'png'){
+						 		 		if($extArchivo == 'jpeg'|| $extArchivo == 'png' || $extArchivo == 'jpg'){
 						 		 			//si la imagen es movido a la ruta de subida
 						 		 			if(move_uploaded_file($nombreTmp, $rutaSubida)){
 						 		 				return true;

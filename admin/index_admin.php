@@ -1,5 +1,18 @@
+
+	
 <?php require 'inc/cabecera.inc'; ?>
-			<div class="container-fluid">
+<?php 
+	if($_POST){
+			 		extract($_POST, EXTR_OVERWRITE);
+	                $nombre= strtolower($nombre); 
+            		$conex= new Database(DB_HOST,DB_USER,DB_PASS,DB_NAME);
+
+
+	}
+ ?>
+
+		
+				<div class="container-fluid">
 				    <div class="row">
 				    	 <div class="col-md-12 text-center">
 				    	 	<h1>Portal Web</h1>

@@ -24,11 +24,14 @@
         $this->resultado = $this->db->query("SELECT * from usuario");
         return $this->resultado ->fetch_all(); //devuelve un array de todos los registross
  	}
- 	public function preparar ( $consulta){//preparar una consulta
+ 	public function preparar ($consulta){//preparar una consulta
  		$this->consulta= $consulta;
  		$this->prep= $this->db->prepare($this->consulta);
  		if(!$this->prep){
- 			trigger_error("Error al preparar la consulta",E_USER_ERROR);
+ 			return  false;
+ 		}
+ 		else{
+ 			return true;
  		}
  	}
  	public function ejecutar (){
