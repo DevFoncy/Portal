@@ -15,11 +15,11 @@
 						 		 		<legend>Logueate</legend>
 						 		 	
 						 		 		<div class="form-group">
-						 		 			<input type="text" class="form-control" id="" placeholder="Su nombre de usuario es">
+						 		 			<input name="correo" type="text" class="form-control" id="" placeholder="Su nombre de usuario es">
 						 		 		</div>
 										
 										<div class="form-group">
-						 		 			<input type="password" class="form-control" id="" placeholder="Su contraseña es" > 
+						 		 			<input name="contrasena" type="password" class="form-control" id="" placeholder="Su contraseña es" > 
 						 		 		</div>
 						 		 		<button type="submit" class="btn btn-primary">Ingresar</button>
 						 		 		<a class="pull-right" href="registrarse_POO.php">Registrarse</a>

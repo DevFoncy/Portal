@@ -1,17 +1,40 @@
-
-	
 <?php require 'inc/cabecera.inc'; ?>
 <?php 
 	if($_POST){
 			 		extract($_POST, EXTR_OVERWRITE);
 	                $nombre= strtolower($nombre); 
-            		$conex= new Database(DB_HOST,DB_USER,DB_PASS,DB_NAME);
+            		
+  					//$validar_email=$conex->validar_datos('contra','usuario',$contrasena);
+  					if($correo && $contrasena){
+	  						$conex= new Database(DB_HOST,DB_USER,DB_PASS,DB_NAME);
+	  					    $validar_email=$conex->validar_datos('correo','usuario',$correo);
+                   		if( preg_match($exp_regular,$correo )){
+                   			
 
+  							if($validar_email!=0){
+
+	  						    $conex->preparar("SELECT nombre,correo, contra FROM usuario WHERE correo='$correo'");
+	  						    $conex->ejecutar();
+	  						    $conex->prep()->bind_result($bdnombre,$bdcontra,$bdcorreo);
+    
+
+  							}
+  							else{
+  								trigger_error("Email no registrado, por favor registrate",E_USER_ERROR);
+  							}
+
+                   		}
+                   		else{
+                   			trigger_error("Email con sintaxis erronea",E_USER_ERROR);
+                   		}
+
+                   	}
+
+
+                         										
 
 	}
- ?>
-
-		
+ ?>		
 				<div class="container-fluid">
 				    <div class="row">
 				    	 <div class="col-md-12 text-center">
