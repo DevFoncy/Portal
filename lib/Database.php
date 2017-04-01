@@ -1,4 +1,4 @@
-<?php
+ <?php
     
  class Database{
  	public $db;
@@ -48,6 +48,14 @@
  	public function cambiarDB($db){
  		$this->db->select_db($db);
  	}
+     
+     public function cerrar_conex(){
+        $this->prep->close();
+        $this->db->close();
+     
+     }
+      
+
 
  	public function validar_datos($columna, $tabla, $condicion){
  		$this->resultado=$this->db->query("SELECT $columna FROM $tabla WHERE $columna='$condicion'");

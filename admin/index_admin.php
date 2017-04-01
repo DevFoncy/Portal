@@ -15,8 +15,17 @@
 
 	  						    $conex->preparar("SELECT nombre,correo, contra FROM usuario WHERE correo='$correo'");
 	  						    $conex->ejecutar();
-	  						    $conex->prep()->bind_result($bdnombre,$bdcontra,$bdcorreo);
-    
+	  						    $conex->prep()->bind_result($bdnombre,$bdcorreo,$bdcontra);
+                                $conex->resultado();
+                                	if( $correo== $bdcorreo){
+                                			if($contrasena == $bdcontra){
+
+                                			}
+                                			else{
+                                				trigger_error("contraseña no coincide con el email ingresado",E_USER_ERROR);
+                                			}
+                                	}
+         
 
   							}
   							else{
