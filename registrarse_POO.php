@@ -6,7 +6,7 @@
 			<div class="col-sm-6 col-md-offset-3">
   
 						 		 <?php
-						 		 	require 'lib/conexion.php';
+						 		 	require_once 'lib/conexion.php';
 						 		    require 'lib/Database.php';
 						 		    $ok=false;
 						 		
@@ -39,7 +39,7 @@
                          										$validar_email=$conex->validar_datos('correo','usuario',$email);
                          											if($validar_email == 0){
                          												if( validar_datos($nombre)){       				   			
-                  																if( $conex->preparar("INSERT INTO usuario values ('', '$user','$password','$nombre','$apellido','$email','$codigo','$cargo','$fecha_ingreso')"))
+                  																if( $conex->preparar("INSERT INTO usuario values ('', '$user','$password','$nombre','$apellido','$email','$codigo','$cargo','$fecha_ingreso','$rutaSubida')"))
                  															    {
                          															$conex->ejecutar();
                          															trigger_error("se ha registrado correctamente", E_USER_NOTICE);

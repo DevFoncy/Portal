@@ -11,11 +11,11 @@
 							<div class="panel panel-default">
 						 		 <div class="panel-body">
 
-						 		 	<form action="admin/index_admin.php" method="POST" role="form">
+						 		 	<form action="admin.php" method="POST" role="form">
 						 		 		<legend>Logueate</legend>
 						 		 	
 						 		 		<div class="form-group">
-						 		 			<input name="correo" type="text" class="form-control" id="" placeholder="Su nombre de usuario es">
+						 		 			<input name="correo" type="text" class="form-control" id="" placeholder="Su email es">
 						 		 		</div>
 										
 										<div class="form-group">
