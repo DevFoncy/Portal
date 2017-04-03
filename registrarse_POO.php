@@ -44,6 +44,7 @@
                          															$conex->ejecutar();
                          															trigger_error("se ha registrado correctamente", E_USER_NOTICE);
                          															$ok=true;
+                         															$conex->cerrar_conex();
                          														
                          														} 
                          														else {
@@ -170,6 +171,7 @@
 							<p>	
 								Te has registrado correctamente, por favor dale clic al boton de abajo para que te logees 
 							</p>
+							<a class="btn btn-primary pull-right" href="index.php"> Volver al indice</a>
 
 					<?php   else : ?>
 

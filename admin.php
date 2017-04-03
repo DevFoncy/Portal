@@ -1,7 +1,9 @@
 <?php require 'inc/cabecera.inc'; ?>
 <div class="container-fluid">
-				    <div class="row">
-				    	 <div class="col-md-12 text-center">
+		<div class="row">
+			  <div class="col-sm-4 text-center col-sm-offset-4">
+
+
 <?php 
     $ok=false;
     
@@ -33,6 +35,7 @@
                                 	if( $correo== $bdcorreo){
                                 			if($contrasena == $bdcontra){
                                 					$ok=true;
+                                					$conex->cerrar_conex();
                                 			}
                                 			else{
                                 				trigger_error("contraseña no coincide con el email ingresado, por favor intente nuevamente",E_USER_ERROR);
@@ -63,9 +66,13 @@
 				<div class="container-fluid">
 				    <div class="row">
 				    	<?php if ($ok) :  ?>
-				    	 <div class="col-sm-4 caja text-center col-sm-offset-3">
-				    	 	<h2> Hola <?php  echo ucfirst ($bdnombre)." ".ucfirst ($bdapellido) ;  ?> Bienvenido a la Administracion </h2>
-				    	 	 <img class="img-responsive img-thumbnail" src='<?php echo $bdruta;?>'>
+				    	 <div class="col-sm-4 text-center col-sm-offset-4">
+				    	    <div class="panel panel-default">
+				    	       <div class= "panel-body">
+					    	 	<h2> Hola <?php  echo ucfirst ($bdnombre)." ".ucfirst ($bdapellido) ;  ?> Bienvenido a la Administracion </h2>
+					    	 	 <img class="img-responsive img-thumbnail" src='<?php echo $bdruta;?>'>
+					    	   </div>
+				    	 	 </div>
 				    	 </div>
 
 				    	<?php endif; 
